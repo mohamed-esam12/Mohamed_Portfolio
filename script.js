@@ -1,50 +1,145 @@
-(function () {
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// ==========================================
+// SCROLL REVEAL ANIMATION (Intersection Observer)
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
 
-  let w, h, stars;
-  const STAR_COUNT_PER_PX = 0.00022;
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Trigger only once
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1, // Trigger when 10% visible
+        rootMargin: "0px 0px -50px 0px"
+    });
 
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-    const count = Math.floor(w * h * STAR_COUNT_PER_PX);
-    stars = new Array(count).fill(0).map(() => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.1 + 0.2,
-      baseAlpha: Math.random() * 0.5 + 0.3,
-      phase: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.4 + 0.15, // twinkle speed
-      drift: Math.random() * 0.02 + 0.005 // slow downward drift
-    }));
-  }
+    reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
+    });
+});
 
-  function draw(t) {
-    ctx.clearRect(0, 0, w, h);
-    for (const s of stars) {
-      const twinkle = reduceMotion ? 1 : Math.sin(t * 0.001 * s.speed + s.phase) * 0.35 + 0.65;
-      ctx.globalAlpha = Math.max(0, Math.min(1, s.baseAlpha * twinkle));
-      ctx.fillStyle = "#e7ebf5";
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
+// ==========================================
+// DYNAMIC STARS BACKGROUND (Canvas)
+// ==========================================
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
 
-      if (!reduceMotion) {
-        s.y += s.drift;
-        if (s.y > h) {
-          s.y = 0;
-          s.x = Math.random() * w;
-        }
-      }
+let width, height;
+let stars = [];
+const STAR_COUNT = 150;
+
+// Mouse interaction tracking
+let mouse = {
+    x: null,
+    y: null
+};
+
+window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+});
+
+// Resize handler
+function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    initStars();
+}
+
+// Star Class
+class Star {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 20) + 1;
+        this.opacity = Math.random();
+        this.fadeSpeed = (Math.random() * 0.02) + 0.005;
+        this.fadingOut = Math.random() > 0.5;
     }
-    ctx.globalAlpha = 1;
-    if (!reduceMotion) requestAnimationFrame(draw);
-  }
 
-  window.addEventListener("resize", resize);
-  resize();
-  draw(0);
-  if (reduceMotion) draw(0); // paint once, static field
-})();
+    draw() {
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    update() {
+        // Twinkle effect
+        if (this.fadingOut) {
+            this.opacity -= this.fadeSpeed;
+            if (this.opacity <= 0.1) this.fadingOut = false;
+        } else {
+            this.opacity += this.fadeSpeed;
+            if (this.opacity >= 0.8) this.fadingOut = true;
+        }
+
+        // Mouse Parallax effect
+        if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = 200;
+            let force = (maxDistance - distance) / maxDistance;
+            let directionX = forceDirectionX * force * this.density;
+            let directionY = forceDirectionY * force * this.density;
+
+            if (distance < maxDistance) {
+                this.x -= directionX * 0.05;
+                this.y -= directionY * 0.05;
+            } else {
+                if (this.x !== this.baseX) {
+                    let dx = this.x - this.baseX;
+                    this.x -= dx / 50;
+                }
+                if (this.y !== this.baseY) {
+                    let dy = this.y - this.baseY;
+                    this.y -= dy / 50;
+                }
+            }
+        } else {
+            // Return to base position gently
+            if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 50;
+            if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 50;
+        }
+
+        this.draw();
+    }
+}
+
+function initStars() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push(new Star());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].update();
+    }
+    requestAnimationFrame(animate);
+}
+
+// Initialize
+window.addEventListener('resize', resize);
+resize();
+animate();
