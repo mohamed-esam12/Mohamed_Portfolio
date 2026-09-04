@@ -413,13 +413,8 @@ section:last-child { border-bottom: none; }
    ANIMATIONS & RESPONSIVE
    ========================================= */
 
-/* Scroll Reveal Classes */
+/* SAFEFALLBACK: Ensure content is visible immediately. */
 .reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-}
-.reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
