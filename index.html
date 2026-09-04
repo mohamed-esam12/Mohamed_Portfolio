@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Esam — Physics & Astronomy</title>
+<meta name="description" content="Mohamed Esam Abdelrazek Kasem — Physics & Astronomy student, data analyst, and citizen scientist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<header class="topbar">
+  <span class="topbar__mark">M.E.</span>
+  <nav class="topbar__nav">
+    <a href="#work">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="topbar__cta" href="Mohamed_Esam_CV.pdf" target="_blank" rel="noopener">Résumé</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero__eyebrow">Faculty of Science, Cairo University</p>
+    <h1 class="hero__title">
+      Mohamed Esam<br>
+      <span>reads the sky for a living, one light curve at a time.</span>
+    </h1>
+    <p class="hero__lede">
+      Senior Physics &amp; Astronomy double-major with a 3.85 GPA, co-author on a
+      published exoplanet study, and a data analyst who turns messy spreadsheets
+      into decisions — in Excel, Python, SQL, Power BI, and Tableau.
+    </p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--primary">Get in touch</a>
+      <a href="#work" class="btn btn--ghost">See the research</a>
+    </div>
+    <dl class="hero__stats">
+      <div><dt>3.85</dt><dd>GPA, excellence with honors</dd></div>
+      <div><dt>250+</dt><dd>light curves studied in published research</dd></div>
+      <div><dt>1</dt><dd>astronomy club founded from scratch</dd></div>
+    </dl>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <h2>Summary</h2>
+    </div>
+    <p class="about__text">
+      I'm a physics and astronomy student at Cairo University, working at the
+      point where astrophysics meets data. Outside coursework, I search for
+      near-Earth asteroids with citizen-science campaigns, extract orbital
+      properties from exoplanet transit data, and lead an astronomy club I
+      started myself. I care about making complex astrophysical ideas make
+      sense to people who've never touched a telescope — and about doing
+      research that holds up.
+    </p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="education">
+    <div class="section-head">
+      <h2>Education</h2>
+    </div>
+    <div class="edu-card">
+      <div class="edu-card__main">
+        <h3>Cairo University, Faculty of Science</h3>
+        <p>Senior Physics &amp; Astronomy Student (double major)</p>
+      </div>
+      <div class="edu-card__meta">
+        <span>2023 – 2027</span>
+        <span>GPA 3.855 · Excellence with honors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH / PROJECTS -->
+  <section class="timeline" id="work">
+    <div class="section-head">
+      <h2>Research &amp; Projects</h2>
+      <p>Astronomy fieldwork alongside self-directed data analysis projects.</p>
+    </div>
+
+    <ol class="timeline__list">
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Aug 2024 – Feb 2025</span>
+          <h3>International Astronomical Search Collaboration</h3>
+          <p class="timeline__role">Citizen Scientist</p>
+          <p>Contributed to the discovery of asteroids and near-Earth objects through active participation in the IASC asteroid campaign.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Ongoing</span>
+          <h3>NASA Exoplanet Watch (with PAN-AFRICA)</h3>
+          <p class="timeline__role">Participant</p>
+          <p>Analyzed exoplanet light curves with Python to extract orbital properties — this work fed into a peer-reviewed publication (see below).</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Academic &amp; Personal Project</span>
+          <h3>Customer Feedback Analysis</h3>
+          <p class="timeline__role">Data Analyst</p>
+          <p>Analyzed 1,949 rows × 21 columns of feedback data in Excel; built an interactive dashboard and pivot tables that surfaced an average experience score of 3.8.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Academic &amp; Personal Project</span>
+          <h3>Sales Distribution Analysis</h3>
+          <p class="timeline__role">Data Analyst</p>
+          <p>Analyzed 870 rows across two related tables using Excel's advanced tools; dashboard highlighted the top 10 products sold per country.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Academic &amp; Personal Project</span>
+          <h3>Ramen Ratings Analysis</h3>
+          <p class="timeline__role">Data Analyst</p>
+          <p>Cleaned a 2,161 × 22 dataset with NumPy and Pandas — handling missing values and inconsistencies — then built Matplotlib/Seaborn visuals to make the findings legible.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__body">
+          <span class="timeline__date">Academic &amp; Personal Project</span>
+          <h3>Amazon Sales Analysis</h3>
+          <p class="timeline__role">Data Analyst</p>
+          <p>Used Power Query to clean large-scale transaction data, then built a multi-page Power BI dashboard with advanced DAX measures covering revenue, product, and regional trends.</p>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- WORK + EXTRACURRICULAR -->
+  <section class="split" id="experience">
+    <div class="split__col">
+      <div class="section-head">
+        <h2>Work</h2>
+      </div>
+      <ul class="role-list">
+        <li>
+          <h3>Astrophysics Senior</h3>
+          <span>Relaunched Academy · Aug – Oct 2025</span>
+          <p>Mentored youth researchers and high school graduates in astrophysics.</p>
+        </li>
+        <li>
+          <h3>Astronomer</h3>
+          <span>BADU Camp, Hurghada</span>
+          <p>Led astronomical observation sessions and explained celestial phenomena to camp attendees.</p>
+        </li>
+        <li>
+          <h3>Tutor Assistant &amp; Tutor</h3>
+          <span>DEMI, iSchool</span>
+          <p>Taught grade 4–6 students the fundamentals of programming.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="split__col">
+      <div class="section-head">
+        <h2>Leadership</h2>
+      </div>
+      <ul class="role-list">
+        <li>
+          <h3>Founder</h3>
+          <span>Cairo University Astronomy Club (CUAC)</span>
+          <p>Established and manage the club to promote astronomy education among university students.</p>
+        </li>
+        <li>
+          <h3>Member</h3>
+          <span>The Egyptian Physics Network · Sep – Dec 2024</span>
+          <p>Helped disseminate physics concepts and knowledge to the public.</p>
+        </li>
+        <li>
+          <h3>Leader of Scouts</h3>
+          <span>Egyptian Scouts Movement, Faculty of Science · May 2025 – present</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PUBLICATION -->
+  <section class="publication">
+    <div class="section-head">
+      <h2>Publication</h2>
+    </div>
+    <blockquote class="publication__card">
+      <p>Exploring Statistical Correlations in Exoplanet Transit Parameters: A Study of Over 250 Light Curves by Citizen Scientists from Developing Countries</p>
+      <cite>Journal of the American Association of Variable Star Observers</cite>
+    </blockquote>
+  </section>
+
+  <!-- CERTS + COURSES -->
+  <section class="split">
+    <div class="split__col">
+      <div class="section-head">
+        <h2>Internships &amp; Courses</h2>
+      </div>
+      <ul class="role-list">
+        <li>
+          <h3>Data Analyst Trainee</h3>
+          <span>Digital Egypt Pioneers Initiative · Sep 2025 – Jun 2026</span>
+          <p>Trained under professional instructors in Excel, Python, SQL Server, Power BI, and Tableau for analysis and visualization.</p>
+        </li>
+        <li>
+          <h3>Research Leader Course</h3>
+          <span>Undergraduate Research Initiative (URI)</span>
+          <p>Developed skills to lead a scientific research team.</p>
+        </li>
+        <li>
+          <h3>Keys of Scientific Research</h3>
+          <span>Undergraduate Research Initiative (URI)</span>
+          <p>Trained in research methodology, paper writing, and critical reading.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="split__col">
+      <div class="section-head">
+        <h2>Certifications</h2>
+      </div>
+      <ul class="role-list">
+        <li>
+          <h3>Fifth Physics Summer School</h3>
+          <span>Department of Physics, Faculty of Science, Cairo University</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+    <div class="skills__grid">
+      <div class="skills__group">
+        <h3>Analysis &amp; Tools</h3>
+        <ul>
+          <li>Advanced Excel</li>
+          <li>Python</li>
+          <li>SQL Server / MySQL</li>
+          <li>Power BI &amp; Power Query</li>
+          <li>Tableau</li>
+          <li>C++</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Research</h3>
+        <ul>
+          <li>Scientific research methodology</li>
+          <li>Data analysis &amp; visualization</li>
+          <li>Microsoft Word &amp; PowerPoint</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Languages</h3>
+        <ul>
+          <li>Arabic — Fluent</li>
+          <li>English — B2+ Upper Intermediate</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-head">
+      <h2>Let's talk</h2>
+      <p>Open to research collaborations, data analysis work, and astronomy outreach.</p>
+    </div>
+    <div class="contact__links">
+      <a href="mailto:MohamedEsamAbdElRazek@proton.me">MohamedEsamAbdElRazek@proton.me</a>
+      <a href="tel:+201121570446">+20 112 157 0446</a>
+      <a href="https://www.linkedin.com/in/mohamedesamabdelrazek" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/mohamed-esam12" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Mohamed Esam Abdelrazek Kasem</span>
+  <a href="#top">Back to top</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
